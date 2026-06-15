@@ -1,0 +1,264 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #000 url('imagens/Astronaut-planet-stars-beautiful-space_3840x2160-3311759676.jpg') no-repeat center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode {
+  background: #000 url(imagens/Gemini_Generated_Image_minkmdminkmdmink.png) no-repeat center/cover;
+}
+
+/* LINKS GERAIS */
+li { 
+  list-style: none;
+ }
+
+a {
+   text-decoration: none;
+   color: #fff;
+   transition: 0.2s;
+   }
+
+a:hover {
+   color: orange;
+   }
+
+/* NAVBAR */
+header {
+   position: relative;
+   padding: 0 2rem;
+  }
+
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+   font-size: 1.5rem;
+   font-weight: bold;
+   }
+
+.navbar .links {
+   display: flex;
+   gap: 2rem; 
+  }
+
+
+/* BOTÃO MOBILE */
+.botao {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* --- MENU MOBILE (HAMBURGUER) --- */
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 80px;
+    width: 300px;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main{
+  flex: 1;
+}
+
+
+/* Parte 2 */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  /* A animação move o equivalente a um bloco inteiro */
+  animation: scroll-seamless 10s linear infinite;
+  will-change: transform; /* Melhora a performance e evita 'soquinhos' */
+}
+
+.content {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.content span {
+  color: white;
+  font-size: clamp(24px, 5vw, 40px); /* Ajusta o tamanho conforme a tela */
+  font-family: sans-serif;
+  font-weight: 900;
+  padding-right: 50px;
+  white-space: nowrap;
+}
+
+@keyframes scroll-seamless {
+  0% {
+    /* Começa no ponto zero */
+    transform: translateX(0);
+  }
+  100% {
+    /* Move exatamente a largura de UM dos três blocos (-33.33%) */
+    /* Como os blocos são idênticos, o loop é perfeito */
+    transform: translateX(-33.3333%);
+  }
+}
+
+
+
+.posicionamento{
+  position: relative;
+  background-color: #ffffff2c;
+  height: 30vh;
+  overflow: hidden;
+}
+
+.nave{
+  position: absolute;
+  max-width: 150px;
+  height: 150px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: voo 6s ease-in-out infinite;
+}
+
+@keyframes voo {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    transform: translate(80%, -60%);
+  }
+  50% {
+    transform: translate(-400%, -50%);
+  }
+  75% {
+    transform: translate(80%, -40%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.nave img{
+  width: 100%;
+  height: auto;
+
+}
+
+.textoExemplo{
+  font-size: clamp(1em, 10vw, 2em);
+}
+
+.texto{
+  padding: 50px;
+}
+
+.topo{
+  position: fixed;
+  opacity: 0;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+footer{
+  padding: 20px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+footer h1{
+  font-size: clamp(2rem, 20vw, 8rem);
+  font-weight: 900;
+  background-image: url(imagens/420cd041c2da516fec374fb717dbd9c2.jpg);
+  background-clip: text;
+  color: transparent;
+  background-size: 200px;
+  background-position: 0% 0%;
+  animation: movimentar 5s linear infinite;
+}
+
+@keyframes movimentar {
+  0%{
+    background-position: 0% 50%;
+  }
+
+  100%{
+    background-position: -100% 50%;
+  }
+}
+@media (max-width: 992px) {
+    .navbar .links {
+       display: none;
+       }
+
+    .botao { 
+      display: block;
+     }
+
+    .dropdown_menu { 
+      display: block;
+     } /* Ativa o container, mas o height:0 o mantém escondido */
+
+  .dropdown_menu.open {
+    display: block;
+    height: 180px; /* Permite crescer conforme o conteúdo */
+    padding: 1rem;
+    z-index: 10;
+}
+
+}
